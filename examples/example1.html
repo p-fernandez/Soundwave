@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example1</title>
+    <script type="text/javascript" src="src/bundle.js"></script>
+    <script type="text/javascript">
+      function loadSound(event) {
+        const file = event.target.files[0];
+        Soundwave.load(file);
+      }
+
+      function playSound() {
+        if (Soundwave) {
+          Soundwave.play();
+        }
+      }
+
+      function pauseSound() {
+        if (Soundwave) {
+          Soundwave.pause();
+        }
+      }
+
+      function stopSound() {
+        if (Soundwave) {
+          Soundwave.stop();
+        }
+      }
+
+      function addListeners() {
+        document.getElementById('soundwave').addEventListener('change', loadSound, false);
+        document.getElementById('play').addEventListener('click', playSound, false);
+        document.getElementById('pause').addEventListener('click', pauseSound, false);
+        document.getElementById('stop').addEventListener('click', stopSound, false);
+      }
+
+      document.addEventListener('DOMContentLoaded', addListeners, false);
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <style>
+    * {
+      font-family: 'Lobster', cursive;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #e2da86;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 25% 40% 25% 10%;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    #local {
+      background-color: transparent;
+      box-sizing: border-box;
+      color: antiquewhite;
+      display: grid;
+      grid-row-start: 2;
+      height: 100%;
+      justify-self: center;
+      line-height: 7rem;
+      overflow: hidden;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+    }
+
+    #local:before, #local:after {
+      content: '';
+      background: linear-gradient(30deg, darkred, antiquewhite);
+      height: 3px;
+      opacity: 0;
+      transition: all 1.2s ease-in;
+    }
+
+    #local:after {
+      height: 7px;
+    }
+
+    #local:hover:before, #local:hover:after {
+      background: linear-gradient(60deg, darkred, antiquewhite);
+      border-radius: 25px;
+      opacity: 1;
+      transition: all 0.4s ease-in;
+    }
+
+    .message {
+      animation: 0.8s ease-in 5 beating;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 1px 1px 1px darkred; 
+      transition: all 0.6s ease-out;
+    }
+
+    @keyframes beating {
+      0% {
+        font-size: 4rem;
+        text-shadow: 0px 0px 0px darkred; 
+      }
+
+      28% {
+        font-size: 4.2rem;
+        text-shadow: 3px 3px 6px darkred; 
+      }
+    }
+
+    .message:hover {
+      cursor: pointer;
+      font-size: 6rem;
+      text-shadow: 5px 5px 10px darkred; 
+      transition: font-size 2s ease-out, text-shadow 2s ease-out;
+    }
+
+    input[type="file"] {
+      display: none;
+      tabindex: -1;
+    }
+
+    #buttonry {
+      display: grid;
+      width: 100%;
+      grid-row-start: 4;
+      grid-template-columns: 33% 11% 11% 11% 33%;
+    }
+
+    #play {
+      grid-column-start: 2;
+      grid-column-end: 3;
+    }
+
+    button {
+      height: 100px;
+      color: darkred;
+      background-color: white;
+      border-radius: 12px;
+      font-size: 2rem;
+      box-shadow: 1px 2px 3px gray;
+      margin-right: 5px;
+      margin-left: 5px;
+      margin-bottom: 5px;
+      transition: all 0.5s ease-out;
+    }
+
+    button:hover {
+      background-color: antiquewhite;
+      border: none;
+      box-shadow: 2px 3px 5px gray;
+      cursor: pointer;
+      transition: all 0.5s ease-out;
+    }
+
+    button:active, button:focus {
+      background-color: darkred;
+      border: none;
+      box-shadow: 5px 5px 8px darkslategray;
+      color: white;
+      outline: 0;
+      transition: all 0.5s ease-out;
+    }
+
+    button, button:active, button:focus, button:hover {
+      -webkit-user-select:none;
+	    -moz-user-select:none;
+	    -ms-user-select:none;
+	    user-select:none;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="local">
+      <label for="soundwave" class="message">
+        Listen to your music
+      </label>
+      <input id="soundwave" type="file" />
+    </div>
+    <div id="buttonry">
+      <button id="play">play</button>
+      <button id="pause">pause</button>
+      <button id="stop">stop</button>
+    </div>
+  </body>
+</html>

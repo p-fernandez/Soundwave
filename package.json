@@ -1,0 +1,31 @@
+{
+  "name": "soundwave",
+  "version": "0.0.1",
+  "description": "Web Audio API wrapper",
+  "main": "main.js",
+  "scripts": {
+    "rollup:dev": "rollup --config rollup.config.dev.js",
+    "rollup:prod": "rollup --config rollup.config.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web",
+    "audio",
+    "api",
+    "context",
+    "javascript"
+  ],
+  "author": "Pablo Fernández <pablo.fernandez.otero@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-cleanup": "^2.0.0",
+    "rollup-plugin-filesize": "^1.5.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-progress": "^0.4.0",
+    "rollup-plugin-uglify": "^3.0.0"
+  }
+}
